@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Envs
+.venv/
+venv/
+env/
+
+# Data/artifacts (keep raw data out of git; you can track small samples if you want)
+data/raw/
+data/processed/
+artifacts/model/
+artifacts/feature_pipeline/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Documentation 
+    docs/Project_Plan.md
