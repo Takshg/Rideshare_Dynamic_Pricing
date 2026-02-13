@@ -1,0 +1,244 @@
+# **Rideshare Dynamic Pricing System**
+
+A production-oriented dynamic pricing system for ride-sharing platforms.
+
+This project implements:
+
+* A strict data contract
+* A reusable feature engineering pipeline
+* Model benchmarking (upcoming phases)
+* Policy simulation (upcoming phases)
+* Elasticity-aware pricing (upcoming phases)
+* FastAPI + Docker + Kubernetes deployment (Phase 6)
+
+The system is designed from day one to support reproducibility, artifact versioning, and containerized deployment.
+
+---
+
+# **Project Structure**
+
+```
+dynamic-pricing/
+├─ src/dynamic_pricing/
+│  ├─ api/                  # FastAPI service (Phase 6)
+│  ├─ config/               # Environment + logging
+│  ├─ schemas/              # Pydantic request/response models
+│  ├─ features/             # Feature engineering pipeline
+│  ├─ models/               # Training + artifact registry
+│  ├─ pricing/              # Pricing strategies (Phase 2)
+│  ├─ simulation/           # Counterfactual engine (Phase 4)
+│  └─ explainability/       # SHAP analysis (Phase 5)
+│
+├─ scripts/                 # Entry-point scripts
+├─ tests/                   # Automated tests
+├─ data/
+│  └─ raw/                  # Raw dataset (not committed)
+├─ artifacts/
+│  └─ feature_pipeline/     # Saved feature pipeline + metadata
+├─ docs/                    # Documentation
+└─ deploy/                  # Docker + Kubernetes (Phase 6)
+```
+
+---
+
+# **Dataset**
+
+```plaintext
+data/raw/dynamic_pricing.csv
+```
+
+### **Required columns (case-sensitive)**
+
+* Number_of_Riders
+* Number_of_Drivers
+* Location_Category
+* Customer_Loyalty_Status
+* Number_of_Past_Rides
+* Average_Ratings
+* Time_of_Booking
+* Vehicle_Type
+* Expected_Ride_Duration
+* Historical_Cost_of_Ride
+
+The CSV loader enforces:
+
+* Strict column validation
+* Header whitespace stripping
+* Type normalization
+* Categorical trimming
+
+---
+
+# **Feature Pipeline (v1)**
+
+The project uses a single reusable FeaturePipeline class.
+
+This pipeline is the single source of truth for:
+
+* Model training
+* Policy simulation
+* Future API inference
+
+## **Raw Numeric Features**
+
+* Number_of_Riders
+* Number_of_Drivers
+* Number_of_Past_Rides
+* Average_Ratings
+* Expected_Ride_Duration
+
+## **Derived Numeric Features**
+
+* riders_per_driver = riders / max(drivers, 1)
+* driver_supply_gap = drivers - riders
+* log_riders
+* log_drivers
+* log_duration
+
+## **Categorical Features (One-Hot Encoded)**
+
+* Location_Category
+* Customer_Loyalty_Status
+* Time_of_Booking
+* Vehicle_Type
+
+## **Preprocessing**
+
+* Numeric features: **StandardScaler**
+* Categorical features: OneHotEncoder(handle_unknown="ignore")
+* Output: Numpy matrix **X**
+* Feature names stored for SHAP: interpretability
+
+---
+
+# **Feature Versioning**
+
+Current feature version: **v1**
+
+Rules:
+
+* Any feature addition/removal requires a version bump.
+* Model artifacts must record the feature version used.
+* Inference must load the same feature pipeline artifact used during training.
+
+Artifacts are stored at:
+
+```
+artifacts/feature_pipeline/
+├─ feature_pipeline.joblib
+└─ metadata.json
+```
+
+---
+
+# **Setup**
+
+### **Create virtual environment**
+
+```
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### **Install project (editable mode)**
+
+```
+pip install -e .
+```
+
+Optional dev extras:
+
+```
+pip install -e ".[dev]"
+```
+
+---
+
+# **Phase 1 Validation**
+
+Run the feature pipeline smoke test:
+
+```
+python scripts/smoke_features.py
+```
+
+Expected output:
+
+* Data shape
+* Feature matrix shape
+* Feature names
+* Reload check success
+
+Run tests:
+
+```
+pytest
+```
+
+---
+
+#  **What Phase 1 Guarantees**
+
+* Strict dataset validation
+* Stable feature engineering contract
+* Saved, reusable pipeline artifact
+* Clean import structure (**src/** layout)
+* Docker-ready architecture
+
+---
+
+# **Upcoming Phases**
+
+### **Phase 2**
+
+Elasticity-aware pricing module.
+
+### **Phase 3**
+
+Model benchmarking:
+
+* Ridge Regression
+* Random Forest
+* Gradient Boosting
+
+### **Phase 4**
+
+Counterfactual policy simulation engine.
+
+### **Phase 5**
+
+Explainability with SHAP.
+
+### **Phase 6**
+
+Production deployment:
+
+* FastAPI inference service
+* Docker containerization
+* Kubernetes deployment
+* Horizontal scaling
+
+---
+
+# **Design Philosophy**
+
+This project prioritizes:
+
+* Reproducibility
+* Versioned artifacts
+* Strict data contracts
+* Clear separation of concerns
+* Production readiness from day one
+
+It is structured not as a notebook experiment, but as a deployable ML system.
+
+---
+
+# **Current Status**
+
+Phase 1 complete:
+
+* Data contract locked
+* Feature pipeline implemented
+* Artifact saving working
+* Tests passing
