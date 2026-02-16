@@ -1,0 +1,8 @@
+{
+  "artifact_type": "model_bundle",
+  "model_name": "lasso",
+  "model_version": "v2",
+  "feature_version": "v2",
+  "target_transform": "log",
+  "created_at_utc": "2026-02-16T06:07:34.440604+00:00"
+}

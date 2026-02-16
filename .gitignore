@@ -18,8 +18,7 @@ env/
 # Data/artifacts (keep raw data out of git; you can track small samples if you want)
 data/raw/
 data/processed/
-artifacts/model/
-artifacts/feature_pipeline/
+
 
 # OS/editor
 .DS_Store
@@ -30,4 +29,4 @@ artifacts/feature_pipeline/
 .ipynb_checkpoints/
 
 # Documentation 
-    docs/Project_Plan.md
+docs/Project_Plan.md

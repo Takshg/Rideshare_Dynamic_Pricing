@@ -61,6 +61,9 @@ class FeaturePipeline:
     feature_names_: List[str] | None = None
     feature_version: str = "v1.0"
 
+    def __init__(self, feature_version: str = "v1"):
+        self.feature_version = feature_version
+
     def fit(self, df: pd.DataFrame) -> "FeaturePipeline":
         df2 = _add_derived_features(df)
 

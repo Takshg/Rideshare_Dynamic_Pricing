@@ -22,6 +22,7 @@ dev = [
   "pre-commit",
   "mypy",
   "types-requests",
+  "statsmodels",
 ]
 
 api = [

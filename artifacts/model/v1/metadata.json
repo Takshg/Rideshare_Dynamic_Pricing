@@ -1,0 +1,8 @@
+{
+  "artifact_type": "model_bundle",
+  "model_name": "ridge",
+  "model_version": "v1",
+  "feature_version": "v1",
+  "target_transform": "none",
+  "created_at_utc": "2026-02-16T06:08:16.602367+00:00"
+}
