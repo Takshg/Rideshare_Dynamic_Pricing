@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    image: dynamic-pricing-api:v1
+    container_name: dynamic-pricing-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+    environment:
+      - MODEL_VERSION=v1

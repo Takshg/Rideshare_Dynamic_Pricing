@@ -4,6 +4,7 @@ scikit-learn
 pydantic>=2.6
 pydantic-settings>=2.2
 joblib
+tabulate
 
 [api]
 fastapi>=0.110
@@ -17,6 +18,7 @@ pytest-cov
 pre-commit
 mypy
 types-requests
+statsmodels
 
 [explain]
 shap
