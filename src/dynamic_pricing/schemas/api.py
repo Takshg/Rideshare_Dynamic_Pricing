@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -21,3 +22,18 @@ class PricePredictionResponse(BaseModel):
     model_name: str
     model_version: str
     feature_version: str
+
+
+class FeatureContribution(BaseModel):
+    feature: str
+    value: float
+    contribution: float
+
+
+class ExplainPredictionResponse(BaseModel):
+    predicted_price: float
+    model_name: str
+    model_version: str
+    feature_version: str
+    top_contributions: list[FeatureContribution]
+    explanation_note: str

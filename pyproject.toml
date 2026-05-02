@@ -29,6 +29,7 @@ dev = [
 api = [
   "fastapi",
   "uvicorn[standard]",
+  "prometheus-client",
 ]
 
 explain = [
