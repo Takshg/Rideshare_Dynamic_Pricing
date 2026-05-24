@@ -1,0 +1,105 @@
+{
+  "model_metrics": [
+    {
+      "version": "baseline",
+      "model_name": "mean_price_baseline",
+      "target_transform": "none",
+      "mae": 160.96417751928144,
+      "rmse": 191.15280997910116,
+      "r2": -0.0021555706797884433,
+      "mae_reduction_vs_baseline_pct": 0.0,
+      "rmse_reduction_vs_baseline_pct": 0.0,
+      "r2_lift_vs_baseline": 0.0,
+      "rmse_delta_vs_v1": NaN,
+      "mae_delta_vs_v1": NaN,
+      "r2_delta_vs_v1": NaN
+    },
+    {
+      "version": "v1",
+      "model_name": "ridge",
+      "target_transform": "none",
+      "mae": 52.490689264901505,
+      "rmse": 67.43534116798584,
+      "r2": 0.8752763276284111,
+      "mae_reduction_vs_baseline_pct": 67.3898316545532,
+      "rmse_reduction_vs_baseline_pct": 64.72176308820227,
+      "r2_lift_vs_baseline": 0.8774318983081996,
+      "rmse_delta_vs_v1": NaN,
+      "mae_delta_vs_v1": NaN,
+      "r2_delta_vs_v1": NaN
+    },
+    {
+      "version": "v2",
+      "model_name": "lasso",
+      "target_transform": "log",
+      "mae": 52.337105659492806,
+      "rmse": 67.20080763218493,
+      "r2": 0.8761423725174811,
+      "mae_reduction_vs_baseline_pct": 67.485246428061,
+      "rmse_reduction_vs_baseline_pct": 64.84445735350056,
+      "r2_lift_vs_baseline": 0.8782979431972695,
+      "rmse_delta_vs_v1": -0.23453353580090663,
+      "mae_delta_vs_v1": -0.15358360540869853,
+      "r2_delta_vs_v1": 0.000866044889069939
+    }
+  ],
+  "policy_metrics": [
+    {
+      "policy": "Historical",
+      "avg_price": 372.5026233496332,
+      "avg_price_delta_pct": 0.0,
+      "avg_acceptance_probability": 0.5,
+      "expected_accepted_rides": 500.0,
+      "total_expected_revenue": 186251.3116748166,
+      "avg_expected_revenue": 186.2513116748166,
+      "price_std": 187.1587562201799,
+      "surge_frequency_25pct": 0.0,
+      "extreme_surge_frequency_50pct": 0.0,
+      "customer_pain_index_pct": 0.0,
+      "expected_revenue_lift_vs_historical_pct": 0.0,
+      "acceptance_delta_vs_historical": 0.0,
+      "price_delta_vs_historical_pct": 0.0
+    },
+    {
+      "policy": "demand_supply",
+      "avg_price": 612.9151949428002,
+      "avg_price_delta_pct": 64.79950792950059,
+      "avg_acceptance_probability": 0.13617533463053702,
+      "expected_accepted_rides": 136.175334630537,
+      "total_expected_revenue": 70140.44720764781,
+      "avg_expected_revenue": 70.14044720764781,
+      "price_std": 330.92621693934535,
+      "surge_frequency_25pct": 81.69999999999999,
+      "extreme_surge_frequency_50pct": 60.4,
+      "customer_pain_index_pct": 64.79950792950059,
+      "expected_revenue_lift_vs_historical_pct": -62.34096470144127,
+      "acceptance_delta_vs_historical": -0.363824665369463,
+      "price_delta_vs_historical_pct": 64.53983315105792
+    },
+    {
+      "policy": "ridge_model",
+      "avg_price": 373.3830496742392,
+      "avg_price_delta_pct": 3.2559999579163486,
+      "avg_acceptance_probability": 0.47564165958735205,
+      "expected_accepted_rides": 475.641659587352,
+      "total_expected_revenue": 177738.95898938845,
+      "avg_expected_revenue": 177.73895898938846,
+      "price_std": 175.02992552755063,
+      "surge_frequency_25pct": 13.4,
+      "extreme_surge_frequency_50pct": 0.8999999999999999,
+      "customer_pain_index_pct": 9.075951199523455,
+      "expected_revenue_lift_vs_historical_pct": -4.570358516610173,
+      "acceptance_delta_vs_historical": -0.02435834041264795,
+      "price_delta_vs_historical_pct": 0.2363543957594141
+    }
+  ],
+  "explainability_metrics": [
+    {
+      "top_feature": "Expected_Ride_Duration",
+      "top_feature_mean_abs_shap": 162.44404286171962,
+      "top_5_feature_coverage_pct": 88.31500478706403,
+      "top_1_feature_share_pct": 72.77644141485466,
+      "num_features_explained": 21
+    }
+  ]
+}
