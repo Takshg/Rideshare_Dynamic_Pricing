@@ -21,7 +21,7 @@ This project is structured as a production-oriented machine learning system rath
 
 ## Project Report
 
-A detailed project report is available in: [Project-Report.pdf](<https://github.com/Takshg/Rideshare_Dynamic_Pricing/blob/main/Project%20Report.pdf>)
+A detailed project report is available in: [Project-Report.pdf](https://github.com/Takshg/Rideshare_Dynamic_Pricing/blob/main/Project-Report.pdf)
 
 The report explains the complete system design, methodology, results, diagnostics, simulation assumptions, explainability layer, API deployment, Docker setup, Kubernetes-ready architecture, limitations, and future work.
 
